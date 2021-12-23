@@ -1,0 +1,13 @@
+**/__pycache__/**
+__pycache__/
+**pyc
+
+datasets/*
+logs/*
+results/*
+tokenize_results/*
+checkpoints/*
+
+# Slurm
+slurm_output/*
+slurm-*.out
