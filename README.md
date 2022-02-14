@@ -1,11 +1,8 @@
-# Code for running pretraining and finetuning of Chinese BERT model
+# Sub-Character Tokenization for Chinese Pretrained Language Models
 
-Model checkpoints available at: https://huggingface.co/thunlp/SubCharTokenization/tree/main . That repo only contains the model checkpoints, the config and tokenizer files are in this repo, which you should load locally. 
 
-Note that we split a fraction of the original CLUE training set and use as the dev set, we choose checkpoints based on results of that dev set and evaluate on the original CLUE dev set as the test set.
-
-You can use ```split_data.py``` to do the dev set splitting, but remember to keep the random seed so that we can all reproduce the same splitting and results.
-
+This repo contains code for reproducing our results in the [paper](https://arxiv.org/abs/2106.00400) and using our models and tokenizers for your own tasks.
+Model checkpoints are available at: https://huggingface.co/thunlp/SubCharTokenization/tree/main. That Huggingface repo only contains the model checkpoints, the config and tokenizer files are in this repo, which you can load locally. 
 
 ## Finetuning
 
@@ -51,3 +48,14 @@ python3 run_cmrc.py \
   --epochs=6
 ```
 
+
+## References
+
+Please consider citing our work if you found this code or our paper beneficial to your research.
+```
+@article{Si2021SubChar, 
+  Author = {Chenglei Si and Zhengyan Zhang and Yingfa Chen and Fanchao Qi and Xiaozhi Wang and Zhiyuan Liu and Yasheng Wang and Qun Liu and Maosong Sun}, 
+  Journal={arXiv preprint arXiv:2106.00400},  
+  Year = {2021},  
+  Title = {Sub-Character Tokenization for Chinese Pretrained Language Models} 
+}    
