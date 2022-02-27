@@ -4,6 +4,21 @@
 This repo contains code for reproducing our results in the [paper](https://arxiv.org/abs/2106.00400) and using our models and tokenizers for your own tasks.
 Model checkpoints are available at: https://huggingface.co/thunlp/SubCharTokenization/tree/main. That Huggingface repo only contains the model checkpoints, the config and tokenizer files are in this repo, which you can load locally. 
 
+## Pretraining
+
+### Pretraining Data Processing
+
+The pretraining data that we used is from Baidu Baike, which consists of 2.2G raw text. You can contact the first author to request the raw pretraining data if you want to reproduce the results in the paper. Alternatively, you can use any other pretraining corpus you want, you should format the file by putting one document per line. Suppose the pretraining file is stored at `wubi_corpus/formatted/baidubaike_corpus.txt` (if not, substitute the directory in the data processing script).
+
+Run `bash data/create_datasets_from_start.sh`. It consists of two data processing steps: 1) data sharding, and 2) creating HDF5 files. Note that we follow a two-stage pretraining pipeline where the first stage has max sequence length 128 and the second stage with max sequence length 512. 
+You should also specify in that script the specific tokenizer vocab and model files that you want to use for tokenizing the corpus.
+
+### Pretraining Commands
+
+Once you have the processed data (the HDF5 files for the two stages of pretraining). Run `bash scripts/run_pretraining.sh` to run the pretraining. The default hyper-parameters in the script are used in the paper, you can also adjust them based on your own needs. Note that we used 8 A100 GPUs when doing the pretraining, you should adjust the batch sizes if you are using other GPUs.
+
+
+
 ## Finetuning
 
 You can run one of the following python code to do finetuning depending on which
