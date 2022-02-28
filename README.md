@@ -4,7 +4,21 @@
 This repo contains code for reproducing our results in the [paper](https://arxiv.org/abs/2106.00400) and using our models and tokenizers for your own tasks.
 Model checkpoints are available at: https://huggingface.co/thunlp/SubCharTokenization/tree/main. That Huggingface repo only contains the model checkpoints, the config and tokenizer files are in this repo, which you can load locally. 
 
-## Pretraining
+## Training the Tokenizers
+
+### Transliterating Chinese Characters
+
+Before training SubChar tokenizers, you need to first transliterate (i.e., encode) the Chinese characters. You can use the script `data/convert_corpus.py` to do so, note that you should specify in the script which transliration method you want to use (e.g., Pinyin, Wubi, etc.).
+
+
+### Subword Tokenization on Transliterated Corpus
+
+We use the SentencePiece library to train the tokenizers. The script we used is `tokenizers/train_sp.py`, which also contains all the hyper-parameters that we used. Notably, we used a vocab size of 22675 and character coverage of 1.00 for the training the SubChar tokenizers. 
+
+The default subword tokenization implementation is unigram LM and you need to specify `model_type="bpe"` if you want to use the byte pair encoding implementation.
+
+
+## Pretraining Transformers
 
 ### Pretraining Data Processing
 
@@ -19,7 +33,7 @@ Once you have the processed data (the HDF5 files for the two stages of pretraini
 
 
 
-## Finetuning
+## Finetuning Pretrained Models
 
 You can run one of the following python code to do finetuning depending on which
 task you want to finetune on. Note that different task/code might need different arguments. 
