@@ -29,20 +29,22 @@ CH2EN_PUNC = {f: t
 
 
 def load_dict(dict_path):
-	return pickle.load(open(dict_path, "rb"))
+    return pickle.load(open(dict_path, "rb"))
 
 ## choose accordingly
 map_dict = load_dict(ch2pinyin)
-for k,v in map_dict.items():
-    # convert digits to special symbols
-    map_dict[k] = ""
-    for c in v:
-        if c.isdigit():
-            map_dict[k] += chr(ord(c)+50000)
-        else:
-            map_dict[k] += c
 
-print ("Dict loaded and converted.")
+## 
+# for k,v in map_dict.items():
+#     # convert digits to special symbols
+#     map_dict[k] = ""
+#     for c in v:
+#         if c.isdigit():
+#             map_dict[k] += chr(ord(c)+50000)
+#         else:
+#             map_dict[k] += c
+
+print ("Dict loaded with size: {}".format(str(len(map_dict.keys()))))
 
 puncs = '，。！？【】（）％＃＠＆１２３４５６７８９０；：,.!?[]()%#@&1234567890;:'
 
@@ -50,7 +52,10 @@ def convert(line):
     line = line.strip().lower()
     out_line = ""
     for char in line:
-        if char in map_dict and char not in puncs:
+        if char in CH2EN_PUNC:
+            char = CH2EN_PUNC[char]
+
+        if char in map_dict:
             ## append transliterated char and separation symbol
             out_line += map_dict[char] + chr(ord('_')+50000)
         else:
