@@ -25,7 +25,7 @@ The default subword tokenization implementation is unigram LM and you need to sp
 The pretraining data that we used is from Baidu Baike, which consists of 2.2G raw text. You can download the raw text data from [this link](https://drive.google.com/file/d/1M9ipOApEDoIFpUHZxjb-HM9Zyj9vrsnn/view?usp=sharing) if you want to reproduce the results in the paper. Alternatively, you can use any other pretraining corpus you want, you should format the file by putting one document per line. Suppose the pretraining file is stored at `wubi_corpus/formatted/baidubaike_corpus.txt` (if not, substitute the directory in the data processing script).
 
 Run `bash data/create_datasets_from_start.sh`. It consists of two data processing steps: 1) data sharding, and 2) creating HDF5 files. Note that we follow a two-stage pretraining pipeline where the first stage has max sequence length 128 and the second stage with max sequence length 512. 
-You should also specify in that script the specific tokenizer vocab and model files that you want to use for tokenizing the corpus.
+You should also specify in that script the specific tokenizer vocab and model files that you want to use for tokenizing the corpus. Also, make sure that you are using the correct tokenizer class in `create_pretraining_data.py` (line 458-463) in the step of creating HDF5 files.
 
 ### Pretraining Commands
 
