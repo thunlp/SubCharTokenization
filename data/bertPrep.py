@@ -25,8 +25,8 @@ import subprocess
 
 
 def main(args):
-    # working_dir = os.environ['BERT_PREP_WORKING_DIR']
-    working_dir = '/data2/private/clsi/wubi_corpus_shuffled'
+    working_dir = os.environ['BERT_PREP_WORKING_DIR']
+    # working_dir = '/data2/private/clsi/wubi_corpus_shuffled'
 
     print('Working Directory:', working_dir)
     print('Action:', args.action)
