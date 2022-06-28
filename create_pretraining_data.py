@@ -460,7 +460,7 @@ def main():
     # tokenizer = RawZhTokenizer(args.vocab_file, args.model_file, do_lower_case=True, max_len=512)
     # tokenizer = WubiZhTokenizer(args.vocab_file, args.model_file, do_lower_case=True, max_len=512)
     # tokenizer = BertZhTokenizer(args.vocab_file, do_lower_case=True, max_len=512)
-    if "noindex" in args.vocab_file.lower():
+    if "no" in args.vocab_file.lower() and "index" in args.vocab_file.lower():
       tokenizer = CommonZhNoIndexTokenizer(args.vocab_file, args.model_file, do_lower_case=True, max_len=512)
     else:
       tokenizer = CommonZhTokenizer(args.vocab_file, args.model_file, do_lower_case=True, max_len=512)
