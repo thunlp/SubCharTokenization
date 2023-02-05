@@ -1,4 +1,4 @@
-# Sub-Character Tokenization for Chinese Pretrained Language Models
+# Sub-Character Tokenization for Chinese Pretrained Language Models (TACL 2023)
 
 
 This repo contains code for reproducing our results in the [paper](https://arxiv.org/abs/2106.00400) and using our models and tokenizers for your own tasks.
@@ -83,8 +83,10 @@ python3 run_cmrc.py \
 Please consider citing our work if you found this code or our paper beneficial to your research.
 ```
 @article{Si2021SubChar, 
-  Author = {Chenglei Si and Zhengyan Zhang and Yingfa Chen and Fanchao Qi and Xiaozhi Wang and Zhiyuan Liu and Yasheng Wang and Qun Liu and Maosong Sun}, 
-  Journal={arXiv preprint arXiv:2106.00400},  
-  Year = {2021},  
-  Title = {Sub-Character Tokenization for Chinese Pretrained Language Models} 
+  author = {Chenglei Si and Zhengyan Zhang and Yingfa Chen and Fanchao Qi and Xiaozhi Wang and Zhiyuan Liu and Yasheng Wang and Qun Liu and Maosong Sun}, 
+  journal={Transactions of the Association for Computational Linguistics},
+  year = {2023},  
+  title = {{Sub-Character Tokenization for Chinese Pretrained Language Models}} 
 }    
+```
+
